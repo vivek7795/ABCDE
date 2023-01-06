@@ -1,0 +1,614 @@
+{
+	"info": {
+		"_postman_id": "4b0f9d2c-6e4f-4fc2-b4c8-642d65fa84a7",
+		"name": "2nd Collection - ReqRes.in - Test Script to Verify Http Status Code",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "5427174"
+	},
+	"item": [
+		{
+			"name": "Get LIST USERS - 200 OK",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// Http status code as 200",
+							"",
+							"pm.test(\"Http Status code is 200 if you get the list of users successfully\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"// Http Status String is OK",
+							"",
+							"pm.test(\"Http status string should be OK if you get the list of users successfully\", function () {",
+							"    pm.response.to.have.status(\"OK\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "",
+						"variables": ""
+					}
+				},
+				"url": {
+					"raw": "https://reqres.in/api/users?page=4",
+					"protocol": "https",
+					"host": [
+						"reqres",
+						"in"
+					],
+					"path": [
+						"api",
+						"users"
+					],
+					"query": [
+						{
+							"key": "Page1",
+							"value": "10",
+							"disabled": true
+						},
+						{
+							"key": "page2",
+							"value": "20",
+							"disabled": true
+						},
+						{
+							"key": "page3",
+							"value": "30",
+							"disabled": true
+						},
+						{
+							"key": "page",
+							"value": "4"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CREATE a User - 201 Created",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// Http status code as 201 if user is created successfully",
+							"",
+							"pm.test(\"Http Status code is 201 if user is created successfully\", function () {",
+							"",
+							"    pm.response.to.have.status(201);",
+							"});",
+							"",
+							"// Http Status String is Created if user is created successfully",
+							"",
+							"pm.test(\"Http status string should be Created if if user is created successfully\", function () {",
+							"    pm.response.to.have.status(\"Created\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"Kriti\",\n    \"job\": \"Software Tester\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "https://reqres.in/api/users"
+			},
+			"response": []
+		},
+		{
+			"name": "Update the User - 200 OK",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// Http status code as 200 if user is updated successfully",
+							"",
+							"pm.test(\"Http Status code is 200 if user is updated successfully\", function () {",
+							"",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"// Http Status String is Created if user is created successfully",
+							"",
+							"pm.test(\"Http status string should be OK if if user is updated successfully\", function () {",
+							"    pm.response.to.have.status(\"OK\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"morpheus\",\n    \"job\": \"Software Tester\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "https://reqres.in/api/users/2"
+			},
+			"response": []
+		},
+		{
+			"name": "Delete User - 204 No Content",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// Http status code as 204 if user is deleted successfully",
+							"",
+							"pm.test(\"Http Status code is 204 if user is updated successfully\", function () {",
+							"",
+							"    pm.response.to.have.status(204);",
+							"});",
+							"",
+							"// Http Status String is Created if user is deleted successfully",
+							"",
+							"pm.test(\"Http status string should be No Content if if user is deleted successfully\", function () {",
+							"    pm.response.to.have.status(\"No Content\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": "https://reqres.in/api/users/2"
+			},
+			"response": []
+		},
+		{
+			"name": "LOGIN - UNSUCCESSFUL - 400 Bad Request",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// Http status code as 400 if user is login  unsuccessfully",
+							"",
+							"pm.test(\"Http status code as 400 if user is login  unsuccessfully\", function () {",
+							"",
+							"    pm.response.to.have.status(400);",
+							"});",
+							"",
+							"// Http status code as 400 if user is login  unsuccessfully",
+							"",
+							"pm.test(\"Http status String as Bad Request if user is login  unsuccessfully\", function () {",
+							"    pm.response.to.have.status(\"Bad Request\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"email\": \"peter@klaven\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "https://reqres.in/api/login"
+			},
+			"response": []
+		},
+		{
+			"name": "DELAYED RESPONSE - 200 OK",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// Http status code as 200 in case of delay response",
+							"",
+							"pm.test(\"Http status code as 200 in case of delay response\", function () {",
+							"",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"// Http status String as Ok in case of delay response",
+							"",
+							"pm.test(\"Http status String as Ok in case of delay response\", function () {",
+							"    pm.response.to.have.status(\"OK\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://reqres.in/api/users?delay=3",
+					"protocol": "https",
+					"host": [
+						"reqres",
+						"in"
+					],
+					"path": [
+						"api",
+						"users"
+					],
+					"query": [
+						{
+							"key": "delay",
+							"value": "3"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "LOGIN - SUCCESSFUL - 200 OK",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// Http status code as 200 in case of user login successfully",
+							"",
+							"pm.test(\"Http status code as 200 in case of user login successfully\", function () {",
+							"",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"// Http status String as Ok in case of user login successfully",
+							"",
+							"pm.test(\"Http status String as Ok in case of user login successfully\", function () {",
+							"    pm.response.to.have.status(\"OK\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"email\": \"eve.holt@reqres.in\",\n    \"password\": \"cityslicka\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "https://reqres.in/api/login"
+			},
+			"response": []
+		},
+		{
+			"name": "REGISTER - UNSUCCESSFUL - 400 Bad Request",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// Http status code as 400 in case of user register unsuccessfully",
+							"",
+							"pm.test(\"Http status code as 400 in case of user login successfully\", function () {",
+							"",
+							"    pm.response.to.have.status(400);",
+							"});",
+							"",
+							"// Http status String as Ok in case of user register unsuccessfully",
+							"",
+							"pm.test(\"Http status String as Bad Request in case of user login successfully\", function () {",
+							"    pm.response.to.have.status(\"Bad Request\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"email\": \"sydney@fife\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "https://reqres.in/api/register"
+			},
+			"response": []
+		},
+		{
+			"name": "REGISTER - SUCCESSFUL - 200 OK",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// Http status code as 200 in case of user register successfully",
+							"",
+							"pm.test(\"Http status code as 200 in case of user register successfully\", function () {",
+							"",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"// Http status String as Ok in case of user register successfully",
+							"",
+							"pm.test(\"Http status String as Ok in case of user register successfully\", function () {",
+							"    pm.response.to.have.status(\"OK\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"email\": \"eve.holt@reqres.in\",\n    \"password\": \"pistol\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "https://reqres.in/api/register"
+			},
+			"response": []
+		},
+		{
+			"name": "UPDATE the user details - 200 OK",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// Http status code as 200 in case of user update successfully",
+							"",
+							"pm.test(\"Http status code as 200 in case of user update successfully\", function () {",
+							"",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"// Http status String as Ok in case of user update successfully",
+							"",
+							"pm.test(\"Http status String as Ok in case of user update successfully\", function () {",
+							"    pm.response.to.have.status(\"OK\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {}
+			},
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"Kriti\",\n    \"job\": \"zion resident\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://reqres.in/api/users/2",
+					"protocol": "https",
+					"host": [
+						"reqres",
+						"in"
+					],
+					"path": [
+						"api",
+						"users",
+						"2"
+					],
+					"query": [
+						{
+							"key": "",
+							"value": null,
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "SINGLE <RESOURCE> NOT FOUND - 404",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// Http status code as 404 in case of single user is not found",
+							"",
+							"pm.test(\"Http status code as 404 iin case of single user is not found\", function () {",
+							"",
+							"    pm.response.to.have.status(404);",
+							"});",
+							"",
+							"// Http status String as Ok in case of single user is not found",
+							"",
+							"pm.test(\"Http status String as Not Found in case of single user is not found\", function () {",
+							"    pm.response.to.have.status(\"Not Found\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "https://reqres.in/api/unknown/26"
+			},
+			"response": []
+		},
+		{
+			"name": "SINGLE <RESOURCE> - 200 OK",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// Http status code as 200 to get the detail of single user",
+							"",
+							"pm.test(\"Http status code as 200 to get the detail of single user\", function () {",
+							"",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"// Http status String as Ok to get the detail of single user",
+							"",
+							"pm.test(\"Http status String as Ok to get the detail of single user\", function () {",
+							"    pm.response.to.have.status(\"OK\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "https://reqres.in/api/unknown/2"
+			},
+			"response": []
+		},
+		{
+			"name": "LIST <RESOURCE> - 200 OK",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// Http status code as 200 to get the detail of list of users",
+							"",
+							"pm.test(\"Http status code as 200 to get the detail of list of users\", function () {",
+							"",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"// Http status String as Ok to get the detail of list of users",
+							"",
+							"pm.test(\"Http status String as Ok to get the detail of list of users\", function () {",
+							"    pm.response.to.have.status(\"OK\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "https://reqres.in/api/unknown"
+			},
+			"response": []
+		},
+		{
+			"name": "LIST <RESOURCE> - 403 Forbidden",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// Http status code as 403 to get the detail of list of users",
+							"",
+							"pm.test(\"Http status code as 403 to get the detail of list of users\", function () {",
+							"",
+							"    pm.response.to.have.status(403);",
+							"});",
+							"",
+							"// Http status String as Ok to get the detail of list of users",
+							"",
+							"pm.test(\"Http status String as Forbidden to get the detail of list of users\", function () {",
+							"    pm.response.to.have.status(\"Forbidden\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "https://reqres.com/api/unknown"
+			},
+			"response": []
+		},
+		{
+			"name": "LIST <RESOURCE> - 500 Server",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// Http status code as 500 to get the detail of list of users",
+							"",
+							"pm.test(\"Http status code as 500 to get the detail of list of users\", function () {",
+							"",
+							"    pm.response.to.have.status(500);",
+							"});",
+							"",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "http://reqq.in/api/unknown"
+			},
+			"response": []
+		}
+	]
+}

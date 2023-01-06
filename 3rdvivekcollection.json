@@ -1,0 +1,331 @@
+{
+	"info": {
+		"_postman_id": "d8f368de-c131-4919-88ab-1e930f025b60",
+		"name": "3rd Collection - ReqRes.in - Variables",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "5427174"
+	},
+	"item": [
+		{
+			"name": "Get LIST USERS - 200 OK",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseurl}}/api/users?Page1=10&page2=20&page3=30&page={{pageNumber}}",
+					"host": [
+						"{{baseurl}}"
+					],
+					"path": [
+						"api",
+						"users"
+					],
+					"query": [
+						{
+							"key": "Page1",
+							"value": "10"
+						},
+						{
+							"key": "page2",
+							"value": "20"
+						},
+						{
+							"key": "page3",
+							"value": "30"
+						},
+						{
+							"key": "page",
+							"value": "{{pageNumber}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CREATE a User - 201 Created",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "test",
+						"value": "test",
+						"type": "text"
+					},
+					{
+						"key": "test1",
+						"value": "test2",
+						"type": "text"
+					},
+					{
+						"key": "test3",
+						"value": "test3",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"{{name}}\", \n    \"job\": \"{{job}}\" \n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseurl}}/api/users?Page1=10&page2=20&page3=30&page={{pageNumber}}",
+					"host": [
+						"{{baseurl}}"
+					],
+					"path": [
+						"api",
+						"users"
+					],
+					"query": [
+						{
+							"key": "Page1",
+							"value": "10"
+						},
+						{
+							"key": "page2",
+							"value": "20"
+						},
+						{
+							"key": "page3",
+							"value": "30"
+						},
+						{
+							"key": "page",
+							"value": "{{pageNumber}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update the User - 200 OK",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "test",
+						"value": "test",
+						"type": "text"
+					},
+					{
+						"key": "test1",
+						"value": "test2",
+						"type": "text"
+					},
+					{
+						"key": "test3",
+						"value": "test3",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"{{nameC}}\",\n    \"job\": \"{{jobC}}\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{baseurl}}/api/users/2"
+			},
+			"response": []
+		},
+		{
+			"name": "Delete User - 204 No Content",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": "{{baseurl}}/api/users/2"
+			},
+			"response": []
+		},
+		{
+			"name": "LOGIN - UNSUCCESSFUL - 400 Bad Request",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"email\": \"peter@klaven\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{baseurl}}/api/login"
+			},
+			"response": []
+		},
+		{
+			"name": "DELAYED RESPONSE - 200 OK",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseurl}}/api/users?delay={{delayTime}}",
+					"host": [
+						"{{baseurl}}"
+					],
+					"path": [
+						"api",
+						"users"
+					],
+					"query": [
+						{
+							"key": "delay",
+							"value": "{{delayTime}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "LOGIN - SUCCESSFUL - 200 OK",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"",
+							"// Environment Variables",
+							"",
+							"pm.environment.set(\"emailLogin\",\"eve.holt@reqres.in\")",
+							"",
+							"pm.environment.set(\"passwordLogin\",\"cityslicka\")"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"email\": \"{{emailLogin}}\",\n    \"password\": \"{{passwordLogin}}\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{baseurl}}/api/login"
+			},
+			"response": []
+		},
+		{
+			"name": "REGISTER - SUCCESSFUL - 200 OK",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var namereg =\"kriti\" // local varible",
+							"",
+							"console.log(\"the value of the variable namereg is \"+ namereg)",
+							"",
+							"// local varible",
+							"",
+							"pm.variables.set(\"name1\",\"Kriti1\")",
+							"",
+							"//print the value of the varibale on console",
+							"",
+							"console.log(\"The value of the variable name 1 is :\"+pm.variables.get(\"name1\"))"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"// Set variables - Set Method",
+							"",
+							"// email as Environment Variable",
+							"pm.environment.set(\"email\",\"eve.holt@reqres.in\");",
+							"",
+							"// Password as collectionVariables",
+							"pm.collectionVariables.set(\"password\", \"pistol\");",
+							"",
+							"//Endpoint as Global variable",
+							"pm.globals.set(\"endpointurl\", \"https://reqres.in\");",
+							"",
+							"//To get the variable - Get Method",
+							"",
+							"var emailReg = pm.environment.get(\"pageNumber\")",
+							"",
+							"console.log(\"the value of the variable is :\"+emailReg)",
+							"",
+							"var baseurl = pm.globals.get(\"baseurl\");",
+							"",
+							"console.log(\"the value of the baseurl is ::\"+baseurl)",
+							"",
+							"",
+							"// Clear the Variables - unset Method",
+							"",
+							"//pm.environment.unset(\"passwordLogin\");",
+							"",
+							"//pm.environment.unset(\"emailLogin\");"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"email\": \"{{email}}\",\n    \"password\": \"{{password}}\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{endpointurl}}/api/register"
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "name",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "password",
+			"value": ""
+		}
+	]
+}
